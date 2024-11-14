@@ -1,0 +1,203 @@
+<mat-toolbar class="mat-elevation-z3" color="primary">
+  <span>TOA TAARIFA</span>
+</mat-toolbar>
+<div class="container">
+  <!-- Your page content here -->
+  <mat-card class="report-card">
+    <!-- Card Header -->
+    <!-- <mat-card-header>
+      <mat-card-title>TOA TAARIFA</mat-card-title>
+    </mat-card-header> -->
+
+    <!-- Card Content -->
+    <mat-card-content>
+      <!-- Introductory Text -->
+      <p>
+        Ndugu Mteja,
+
+        <br />
+        Shirika la umeme Tanzania (TANESCO) linakusihi wewe mwananchi mwema,
+        mzalendo na mpenda maendeleo kutoa taarifa kwa uongozi wa shirika kuhusu
+        ukiukwaji wa taratibu za kazi zinazofanywa na baadhi ya watumishi wasio
+        waadilifu, wateja, wakandarasi au watu wengine wanaofanya kazi na
+        shirika kuhusu hujuma dhidi ya mali za shirika, wizi, matukio ya rushwa,
+        unyanyasaji, uharibifu wa mali na uendeshaji wa vyombo vya moto vya
+        Shirika kwa namna hatarishi, pamoja na matukio mengine yenye nia ya
+        kiuhalifu. Shirika litapokea taarifa yako kwa usiri mkubwa na hatua
+        zitachukuliwa haraka iwezekanavyo kwa maslahi mapana ya maendeleo ya
+        shirika letu na nchi yetu kwa ujumla.
+      </p>
+
+      <!-- Form Inputs -->
+      <form
+        #whistleForm="ngForm"
+        (ngSubmit)="submitWistleBlow(whistleForm)"
+        enctype="multipart/form-data"
+      >
+        <mat-form-field appearance="outline">
+          <mat-label>Jina Kamili (Hiyari)</mat-label>
+          <input
+            matInput
+            placeholder="Ingiza jina lako kamili"
+            name="whistleblower"
+            ngModel
+          />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Namba ya simu (Hiyari)</mat-label>
+          <input
+            matInput
+            type="tel"
+            placeholder="Ingiza namba ya simu"
+            name="phone"
+            ngModel
+          />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Barua pepe (Hiyari)</mat-label>
+          <input
+            matInput
+            type="email"
+            placeholder="Ingiza barua pepe"
+            name="email"
+            ngModel
+          />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Taarifa ya tukio kwa Ufupi</mat-label>
+          <textarea
+            matInput
+            placeholder="Andika taarifa ya tukio"
+            [rows]="5"
+            required
+            name="taarifa"
+            ngModel
+          ></textarea>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label
+            >Mahali tukio lilipotokea mkoa/wilaya/Idara/kitengo nk.
+          </mat-label>
+          <input
+            matInput
+            placeholder="Mahali pa tukio"
+            required
+            name="location"
+            ngModel
+          />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label
+            >Taja majina ya wafanyakazi/wasio wafanyakazi waliohusika (kama
+            unawajua)(Hiyari)</mat-label
+          >
+          <textarea
+            matInput
+            placeholder="Taja majina ya waliohusika"
+            name="wahusika"
+            ngModel
+          >
+          </textarea>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label
+            >Taarifa nyingine za ziada / ushahidi (kama zipo
+            toa/weka)(Hiyari)</mat-label
+          >
+          <textarea
+            matInput
+            placeholder="Andika taarifa nyingine za ziada"
+            name="taarifa_ziada"
+            ngModel
+          ></textarea>
+        </mat-form-field>
+        <div class="attachment">
+          <label>
+            Ambatanisha Ushahidi Nyaraka au picha / ushahidi mwingine (kama
+            upo/zipo)(Hiyari)
+          </label>
+          <input
+            type="file"
+            #fileInput
+            (change)="onFileSelected($event)"
+            hidden
+            accept=".jpg,.jpeg,.png,.pdf"
+          />
+          <span>{{ selectedFileName || "Hamna Kiambatanishi" }}</span>
+          <button
+            mat-icon-button
+            (click)="fileInput.click()"
+            aria-label="Ambatanisha"
+            type="button"
+          >
+            <mat-icon>attach_file</mat-icon>
+          </button>
+        </div>
+        @if(errorMessage()){
+        <mat-chip-set>
+          <mat-chip-option color="warn" selected>
+            {{ errorMessage() }}
+          </mat-chip-option>
+        </mat-chip-set>
+        }
+        <button
+          mat-raised-button
+          type="submit"
+          class="full-width"
+          color="primary"
+        >
+          @if(loadingState()){
+          <mat-spinner [diameter]="25" [strokeWidth]="2"></mat-spinner>
+          }@else {
+          {{ "Bonyeza Kuwasilisha" }}
+          }
+        </button>
+      </form>
+    </mat-card-content>
+
+    <!-- Card Footer -->
+    <mat-card-footer>
+      <p>Kuwa huru, unaweza kutoa taarifa yako pia kupitia:-</p>
+      <p class="give-spacing">
+        1. Kuwasiliana moja kwa moja na ofisi ya Mkurugenzi Mtendaji wa shirika
+        (Kitengo cha Usalama) Namba ya simu +255 0000000 kitengo cha Huduma za
+        Usalama wa Shirika Makao Makuu.
+      </p>
+      <p class="give-spacing">
+        Barua pepe:
+        <a href="mailto:managersecurity.tips@tanesco.co.tz"
+          >managersecurity.tips&#64;tanesco.co.tz</a
+        >,
+        <a href="mailto:taarifa.hujuma@tanesco.co.tz"
+          >taarifa.hujuma&#64;tanesco.co.tz</a
+        >
+      </p>
+      <p class="give-spacing">
+        Tovuti:
+        <a href="https://www.tanesco.co.tz" target="_blank"
+          >www.tanesco.co.tz</a
+        >
+      </p>
+      <p>2. Kufika katika ofisi za shirika zilizopo karibu nawe nchini kote.</p>
+
+      <p class="give-spacing">Zingatia:</p>
+      <p>1. Taarifa zote zitakazopokelewa zitahifadhiwa kwa usiri mkubwa.</p>
+      <p>
+        2. Endapo kutatokea aina yoyote ya unyanyasaji, ukatili au ulipizaji wa
+        kisasi, mtoa taarifa atamjulisha Mkurugenzi Mtendaji ambaye atachukua
+        stahiki za kinidhamu ili kumlinda mtoa taarifa.
+      </p>
+      <p>
+        3. Hakutakuwa na kesi ya madai au jinai itakayofunguliwa dhidi ya mtoa
+        taarifa itakayotokana na taarifa aliyoiwasilisha.
+      </p>
+      <p>4. Mrejesho utatolewa kwa mtoa taarifa.</p>
+    </mat-card-footer>
+  </mat-card>
+</div>

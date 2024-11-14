@@ -1,0 +1,65 @@
+mat-toolbar {
+  position: sticky;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #0f5132;
+  top: 0;
+  //   margin-bottom: 10px;
+}
+
+mat-card-content p {
+  color: #555; /* Darker color for readability */
+  font-size: 1rem;
+  line-height: 1.6;
+  font-family: "Roboto", sans-serif;
+}
+/* Style for form field labels and input */
+mat-form-field,
+input {
+  margin-bottom: 16px;
+  color: #555;
+  width: 100%;
+  margin-bottom: 16px;
+}
+.attachment {
+  color: #555;
+}
+.full-width {
+  margin-top: 30px;
+  width: 100%;
+}
+mat-icon {
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+mat-form-field label {
+  font-weight: 500;
+  color: #555; /* Subtle color for form labels */
+}
+mat-card-footer {
+  margin-top: 80px;
+  text-align: justify;
+}
+mat-card-footer p {
+  font-size: 0.875rem;
+  color: #18392b;
+  line-height: 1.5;
+  //   font-style: italic;
+}
+
+mat-card {
+  background-color: white; /* White background for contrast */
+  border-radius: 8px; /* Rounded corners for a softer look */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Subtle shadow for elevation */
+  padding: 16px;
+}
+mat-card:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3); /* Slightly more shadow on hover */
+}
+
+.give-space {
+  margin-bottom: 10px;
+}

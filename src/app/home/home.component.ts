@@ -21,6 +21,7 @@ import { WhistleService } from '../services/whistle.service';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatChipsModule } from '@angular/material/chips';
 import { finalize } from 'rxjs';
+import { DialogComponent } from './dialog/dialog.component';
 
 @Component({
   selector: 'app-home',
@@ -37,12 +38,14 @@ import { finalize } from 'rxjs';
     MatIconModule,
     MatToolbarModule,
     MatChipsModule,
+    DialogComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
 export class HomeComponent {
   loadingState = signal(false);
+  successState = signal(false);
   selectedFileName: string = '';
   selectedFile: any = null;
   errorMessage = signal('');
@@ -89,6 +92,8 @@ export class HomeComponent {
       )
       .subscribe({
         next: (result: any) => {
+          this.successState.set(true);
+          whistleForm.resetForm();
           this.controlMessage(result.message);
           this.toastrService.success(result.message, 'Success');
         },
@@ -111,5 +116,9 @@ export class HomeComponent {
     setInterval(() => {
       this.errorMessage.set('');
     }, 5000);
+  }
+
+  onDialogClose() {
+    this.successState.set(false);
   }
 }

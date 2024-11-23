@@ -1,0 +1,27 @@
+<div class="backdrop" (click)="onCancel()">
+  <dialog open>
+    @if(message()){
+    <mat-chip-set>
+      <mat-chip-option color="warn" selected>
+        {{ message() }}
+      </mat-chip-option>
+    </mat-chip-set>
+    } @else {
+    <mat-chip-set>
+      <mat-chip-option color="warn" selected>
+        Taarifa Yako Imewasilishwa
+      </mat-chip-option>
+    </mat-chip-set>
+    }
+    <p class="actions">
+      <button
+        mat-raised-button
+        color="primary"
+        type="button"
+        (click)="onCancel()"
+      >
+        Cancel
+      </button>
+    </p>
+  </dialog>
+</div>

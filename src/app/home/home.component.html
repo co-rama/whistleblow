@@ -1,4 +1,7 @@
 <mat-toolbar class="mat-elevation-z3" color="primary">
+  <div class="logo">
+    <img src="/tanesco-logo.png" alt="Tanesco Logo" />
+  </div>
   <span>TOA TAARIFA</span>
 </mat-toolbar>
 <div class="container">
@@ -145,19 +148,25 @@
             {{ errorMessage() }}
           </mat-chip-option>
         </mat-chip-set>
-        }
+        } @if(loadingState()){
+        <button
+          mat-raised-button
+          type="button"
+          class="full-width"
+          color="primary"
+        >
+          <mat-spinner [diameter]="25" [strokeWidth]="2"></mat-spinner>
+        </button>
+        }@else {
         <button
           mat-raised-button
           type="submit"
           class="full-width"
           color="primary"
         >
-          @if(loadingState()){
-          <mat-spinner [diameter]="25" [strokeWidth]="2"></mat-spinner>
-          }@else {
           {{ "Bonyeza Kuwasilisha" }}
-          }
         </button>
+        }
       </form>
     </mat-card-content>
 
@@ -201,3 +210,6 @@
     </mat-card-footer>
   </mat-card>
 </div>
+<!-- @if(successState()){
+<app-dialog (close)="onDialogClose()" [message]="errorMessage"/>
+} -->
